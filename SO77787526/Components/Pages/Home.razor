@@ -1,0 +1,18 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+@code {
+    private Guid _componentUid = Guid.NewGuid();
+    [CascadingParameter(Name = "AppName")] private string AppName { get; set; } = "Not Set";
+    protected override Task OnInitializedAsync()
+    {
+        Console.WriteLine($"{this.GetType().Name} with Id:{_componentUid} ran OnInitializedAsync");
+        Console.WriteLine($"{this.GetType().Name} Cascaded Value: {this.AppName}.");
+        return base.OnInitializedAsync();
+    }
+}
